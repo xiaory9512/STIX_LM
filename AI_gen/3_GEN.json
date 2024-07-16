@@ -1,0 +1,52 @@
+[
+    {
+        "type": "malware",
+        "id": "malware--d6e6f0a4-8b15-4a4d-8f6d-3f3f6d6f6d6f",
+        "name": "Online Job Site Trojan",
+        "hashes": {
+            "MD5": "1717b7fff97d37a1e1a0029d83492de1",
+            "SHA-1": "c79a326f8411e9488bdc3779753e1e3489aaedea"
+        }
+    },
+    {
+        "type": "registry-key",
+        "id": "registry-key--f6d6f3f3-8f6d-4a4d-8b15-d6e6f0a4d6e6",
+        "key": "HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Services\\WSALG2"
+    },
+    {
+        "type": "organization",
+        "id": "organization--pym-technologies",
+        "name": "Pym Technologies"
+    },
+    {
+        "type": "organization",
+        "id": "organization--oscorp-industries",
+        "name": "Oscorp Industries"
+    },
+    {
+        "type": "threat-actor",
+        "id": "threat-actor--oscorp",
+        "name": "Oscorp Industries"
+    },
+    {
+        "type": "sighting",
+        "id": "sighting--f6d6f3f3-8f6d-4a4d-8b15-d6e6f0a4d6e6",
+        "observed_data_refs": ["malware--d6e6f0a4-8b15-4a4d-8f6d-3f3f6d6f6d6f", "registry-key--f6d6f3f3-8f6d-4a4d-8b15-d6e6f0a4d6e6"],
+        "where_sighted_refs": ["organization--oscorp-industries"],
+        "description": "Malware 'Online Job Site Trojan' detected on Oscorp Industries network."
+    },
+    {
+        "type": "relationship",
+        "id": "relationship--f6d6f3f3-8f6d-4a4d-8b15-d6e6f0a4d6e6",
+        "relationship_type": "indicates",
+        "source_ref": "sighting--f6d6f3f3-8f6d-4a4d-8b15-d6e6f0a4d6e6",
+        "target_ref": "malware--d6e6f0a4-8b15-4a4d-8f6d-3f3f6d6f6d6f"
+    },
+    {
+        "type": "relationship",
+        "id": "relationship--8f6d-4a4d-8b15-d6e6f0a4d6e6",
+        "relationship_type": "indicates",
+        "source_ref": "sighting--f6d6f3f3-8f6d-4a4d-8b15-d6e6f0a4d6e6",
+        "target_ref": "registry-key--f6d6f3f3-8f6d-4a4d-8b15-d6e6f0a4d6e6"
+    }
+]

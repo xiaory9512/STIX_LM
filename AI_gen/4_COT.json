@@ -1,0 +1,41 @@
+[
+  {
+    "type": "indicator",
+    "id": "indicator--1234",
+    "created": "2022-01-01T00:00:00Z",
+    "modified": "2022-01-01T00:00:00Z",
+    "labels": [
+      "malicious-activity"
+    ],
+    "pattern": "[url:value = 'malicious-url.com']"
+  },
+  {
+    "type": "relationship",
+    "id": "relationship--5678",
+    "created": "2022-01-02T00:00:00Z",
+    "modified": "2022-01-02T00:00:00Z",
+    "relationship_type": "indicates",
+    "source_ref": "indicator--1234",
+    "target_ref": "organization--Alpha"
+  },
+  {
+    "type": "sighting",
+    "id": "sighting--9012",
+    "created": "2022-01-03T00:00:00Z",
+    "modified": "2022-01-03T00:00:00Z",
+    "first_seen": "2022-01-03T00:00:00Z",
+    "last_seen": "2022-01-03T00:00:00Z",
+    "count": 1,
+    "sighting_of_ref": "indicator--1234",
+    "observed_data_refs": []
+  },
+  {
+    "type": "relationship",
+    "id": "relationship--3456",
+    "created": "2022-01-04T00:00:00Z",
+    "modified": "2022-01-04T00:00:00Z",
+    "relationship_type": "sighting-of",
+    "source_ref": "sighting--9012",
+    "target_ref": "organization--Beta"
+  }
+]

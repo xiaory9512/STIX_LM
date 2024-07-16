@@ -1,0 +1,30 @@
+[
+  {
+    "type": "grouping",
+    "id": "group--1234",
+    "name": "Disco Team",
+    "aliases": ["Equipo del Discoteca"],
+    "description": "Crime syndicate specializing in stealing credit card information for financial gain",
+    "primary_language": "Spanish"
+  },
+  {
+    "type": "identity",
+    "id": "identity--5678",
+    "name": "Disco Team",
+    "aliases": ["Equipo del Discoteca"],
+    "description": "Crime syndicate specializing in stealing credit card information for financial gain",
+    "identity_class": "crime-syndicate"
+  },
+  {
+    "type": "email-addr",
+    "id": "email--9012",
+    "value": "disco-team@stealthemail.com",
+    "description": "Public email alias used by Disco Team"
+  },
+  {
+    "type": "attack-pattern",
+    "id": "attack-pattern--3456",
+    "name": "Stealing credit card information",
+    "description": "Activity known to be carried out by Disco Team for financial gain"
+  }
+]

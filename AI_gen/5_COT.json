@@ -1,0 +1,21 @@
+[
+  {
+    "type": "file",
+    "id": "file--d7e1f7e2-3b7d-4b0f-8b3d-3e6b6a6b7d7a",
+    "hashes": {
+      "SHA-256": "ef537f25c895bfa782526529a9b63d97aa631564d5d789c2b765448c8635fb6c"
+    }
+  },
+  {
+    "type": "malware",
+    "id": "malware--d7e1f7e2-3b7d-4b0f-8b3d-3e6b6a6b7d7b",
+    "name": "Poison Ivy RAT"
+  },
+  {
+    "type": "indicator",
+    "id": "indicator--d7e1f7e2-3b7d-4b0f-8b3d-3e6b6a6b7d7c",
+    "pattern": "file:hashes.SHA-256 = 'ef537f25c895bfa782526529a9b63d97aa631564d5d789c2b765448c8635fb6c'",
+    "valid_from": "2014-01-01T00:00:00Z",
+    "description": "Presence of file hash ef537f25c895bfa782526529a9b63d97aa631564d5d789c2b765448c8635fb6c suggests potential compromise by Poison Ivy RAT"
+  }
+]

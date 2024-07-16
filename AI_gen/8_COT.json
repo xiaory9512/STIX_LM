@@ -1,0 +1,56 @@
+[
+  {
+    "type": "campaign",
+    "id": "campaign--1",
+    "name": "Operation Bran Flakes",
+    "description": "Campaign focused on inserting false information into the BPP's web pages to influence Branistan's election.",
+    "start_date": "2016-01-01",
+    "end_date": "2016-12-31"
+  },
+  {
+    "type": "campaign",
+    "id": "campaign--2",
+    "name": "Operation Raisin Bran",
+    "description": "DDoS attack aimed at overwhelming the BPP’s web servers to disrupt their online operations.",
+    "start_date": "2016-02-01",
+    "end_date": "2016-12-31"
+  },
+  {
+    "type": "threat-actor",
+    "id": "threat-actor--1",
+    "name": "APT BPP",
+    "description": "Advanced persistent threat group known for strategic approach and government-level resources.",
+    "motivation": "ideological dominance",
+    "objective": "target the BPP and undermine Branistan's electoral process"
+  },
+  {
+    "type": "intrusion-set",
+    "id": "intrusion-set--1",
+    "name": "APT BPP",
+    "description": "APT group responsible for Operation Bran Flakes and Operation Raisin Bran."
+  },
+  {
+    "type": "attack-pattern",
+    "id": "attack-pattern--1",
+    "name": "Content Spoofing",
+    "description": "Technique used by APT BPP to manipulate content on the BPP website."
+  },
+  {
+    "type": "attack-pattern",
+    "id": "attack-pattern--2",
+    "name": "HTTP Flood",
+    "description": "Technique used by APT BPP in DDoS attacks against the BPP website."
+  },
+  {
+    "type": "identity",
+    "id": "identity--1",
+    "name": "Franistan Intelligence",
+    "description": "Key figures supporting the threat operation against the BPP."
+  },
+  {
+    "type": "identity",
+    "id": "identity--2",
+    "name": "Branistan People’s Party (BPP)",
+    "description": "Target of the cyber operation aimed at disrupting their online operations."
+  }
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "type": "group",
+        "id": "group--12345678-1234-1234-1234-123456789012",
+        "name": "Disco Team",
+        "aliases": [
+            "Equipo del Discoteca"
+        ],
+        "description": "Crime syndicate specializing in stealing credit card information for financial gain",
+        "primary_language": "Spanish",
+        "email": "disco-team@stealthemail.com"
+    }
+]

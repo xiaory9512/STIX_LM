@@ -1,0 +1,35 @@
+[
+    {
+        "type": "indicator",
+        "id": "indicator--1234",
+        "created_by_ref": "identity--alpha",
+        "labels": [
+            "malicious-activity"
+        ],
+        "pattern": "[url:value = 'malicious-url.com']"
+    },
+    {
+        "type": "identity",
+        "id": "identity--alpha",
+        "name": "Alpha",
+        "roles": [
+            "threat-actor"
+        ]
+    },
+    {
+        "type": "identity",
+        "id": "identity--beta",
+        "name": "Beta",
+        "roles": [
+            "threat-actor"
+        ]
+    },
+    {
+        "type": "sighting",
+        "id": "sighting--5678",
+        "created_by_ref": "identity--beta",
+        "observed_data_refs": [
+            "indicator--1234"
+        ]
+    }
+]

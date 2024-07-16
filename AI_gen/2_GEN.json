@@ -1,0 +1,50 @@
+[
+    {
+        "type": "malware",
+        "id": "malware--d1c6",
+        "name": "Poison Ivy Variant d1c6",
+        "description": "Variant of Poison Ivy used by Adversary Bravo",
+        "file_hashes": [
+            {
+                "type": "MD5",
+                "hash": "<insert MD5 hash>"
+            },
+            {
+                "type": "SHA-1",
+                "hash": "<insert SHA-1 hash>"
+            }
+        ]
+    },
+    {
+        "type": "threat-actor",
+        "id": "threat-actor--bravo",
+        "name": "Adversary Bravo",
+        "description": "Threat actor known for using phishing attacks to deliver remote access malware",
+        "malware_used": [
+            "malware--d1c6"
+        ]
+    },
+    {
+        "type": "campaign",
+        "id": "campaign--bravo-phishing",
+        "name": "Adversary Bravo Phishing Campaign",
+        "description": "Spear phishing campaigns conducted by Adversary Bravo",
+        "threat_actors": [
+            "threat-actor--bravo"
+        ]
+    },
+    {
+        "type": "indicator",
+        "id": "indicator--file-hash",
+        "name": "File Hash Indicator",
+        "description": "Indicates specific file hashes associated with Poison Ivy Variant d1c6",
+        "malware": "malware--d1c6"
+    },
+    {
+        "type": "indicator",
+        "id": "indicator--registry-key",
+        "name": "Registry Key Indicator",
+        "description": "Indicates creation of specific registry key by Poison Ivy Variant d1c6",
+        "malware": "malware--d1c6"
+    }
+]

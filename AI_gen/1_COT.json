@@ -1,0 +1,29 @@
+[
+  {
+    "type": "identity",
+    "id": "identity--f431f809-377b-45e0-aa1c-6a4751b8f4f4",
+    "name": "Stark Industries",
+    "description": "STIX producer",
+    "roles": ["producer"]
+  },
+  {
+    "type": "marking-definition",
+    "id": "marking-definition--8a8e5f4d-007c-4f1f-8b0d-3f3b7e1b4b1c",
+    "definition_type": "statement",
+    "definition": "Copyright information"
+  },
+  {
+    "type": "marking-definition",
+    "id": "marking-definition--f3b8e2c1-9a6d-4e7b-8c3f-2d1e9a8c7b3f",
+    "definition_type": "tlp",
+    "definition": "AMBER"
+  },
+  {
+    "type": "indicator",
+    "id": "indicator--c7f8d6e5-3b2a-4c1d-8e9f-5a6b4c3d2a1b",
+    "indicator_types": ["IP"],
+    "pattern": "[ipv4-addr:value = '10.0.0.0']",
+    "valid_from": "2017-04-14T00:00:00Z",
+    "marking_ref": ["marking-definition--f3b8e2c1-9a6d-4e7b-8c3f-2d1e9a8c7b3f", "marking-definition--8a8e5f4d-007c-4f1f-8b0d-3f3b7e1b4b1c"]
+  }
+]
