@@ -16,9 +16,16 @@ from utility import DFKGUtility
 
 
 class GraphAligner:
-    def __init__(self, graph1_path, graph2_path, model_name="all-MiniLM-L6-v2"):
+    def __init__(
+        self,
+        graph1_path,
+        graph2_path,
+        matched_pairs_threshold=0.8,
+        model_name="all-MiniLM-L6-v2",
+    ):
         self.model = SentenceTransformer(model_name)
         self.matched_pairs = {}
+        self.matched_pairs_threshold = matched_pairs_threshold
         self.new_id_start_graphA = 10000
         self.new_id_start_graphB = 20000
         self.graph1 = self.rename_ids(
@@ -56,12 +63,6 @@ class GraphAligner:
                 value = []
                 if k.endswith("_refs"):
                     item[k] = [id_mapping[ele] for ele in item[k]]
-
-            # if "target_ref" in item:
-            #     try:
-            #         item["target_ref"] = id_mapping[item["target_ref"]]
-            #     except KeyError:
-            #         raise KeyError(f"target_ref ID doesn't exist: {item['target_ref']}")
 
         # Print the updated data
         print(json_obj)
@@ -112,7 +113,6 @@ class GraphAligner:
     def match_pairs(
         self,
         file="similarity_matrix.txt",
-        threshold=0.8,
         saved_file_path="match_pairs.txt",
     ):
         self.compute_similarity_matrix(
@@ -132,21 +132,13 @@ class GraphAligner:
 
         for i in range(rows):
             for j in range(cols):
-                if similarity[i, j] > threshold:
+                if similarity[i, j] > self.matched_pairs_threshold:
                     # Check if the pair or its reverse is not already in matched_pairs
                     if (
                         i not in self.matched_pairs
                         and j not in self.matched_pairs.values()
                     ):
                         self.matched_pairs[i] = j
-
-        # for i, row in enumerate(similarity):
-        #     max_score = max(row)
-        #     if max_score > threshold:
-        #         j = row.index(max_score)
-        #         # Check if the pair or its reverse is not already in matched_pairs
-        #         if i not in self.matched_pairs and j not in self.matched_pairs.values():
-        #             self.matched_pairs[i] = j
 
         print(f"Matched Pairs: {self.matched_pairs}")
         # Write the dictionary to the file
@@ -266,7 +258,7 @@ class GraphAligner:
         return a_graph
 
     def align_graphs(self, shown_old_ids=False, save_to_file=True):
-        self.match_pairs(file="similarity_matrix.txt", threshold=0.6)
+        self.match_pairs(file="similarity_matrix.txt")
 
         self.graph1 = self.align_graph(
             self.graph1, self.matched_pairs, shown_old_ids, graph_type="A"
@@ -318,17 +310,15 @@ class GraphAligner:
         aligner.rename_ids(DFKGUtility.load_json(graph_path1), graph_type="A")
 
     @staticmethod
-    def test_rename_ids_2(graph_path1, graph_path2):
+    def test_rename_ids_2():
         print("============Testing rename_ids")
         graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
         graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
-        aligner = GraphAligner(graph_path1, graph_path2)
+        aligner = GraphAligner(graph_path1, graph_path2, matched_pairs_threshold=0.8)
         # aligner.rename_ids(DFKGUtility.load_json(graph_path1), graph_type="A")
 
 
 if __name__ == "__main__":
-    graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-    graph_path2 = "testcase/node_distance/07_b.json"
     # Usage example:
     # GraphAligner.test_align_graphs()
     # GraphAligner.test_rename_ids()

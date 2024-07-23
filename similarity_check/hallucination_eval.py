@@ -1,7 +1,8 @@
 import json
 import importlib
-import graph_aligner
-import graph_distancer
+
+# import graph_aligner
+# import graph_distancer
 import os
 import shutil
 import warnings
@@ -12,10 +13,13 @@ from utility import DFKGUtility
 
 
 class HalluEvaluator:
-    def __init__(self, graph_pathA, graph_pathB):
+    def __init__(self, graph_pathA, graph_pathB, matched_pairs_threshold=0.8):
         self.graph_pathA = graph_pathA
         self.graph_pathB = graph_pathB
-        self.graphAligner = GraphAligner(self.graph_pathA, self.graph_pathB)
+        self.matched_pairs_threshold = matched_pairs_threshold
+        self.graphAligner = GraphAligner(
+            self.graph_pathA, self.graph_pathB, self.matched_pairs_threshold
+        )
         self.graph1, self.graph2 = self.graphAligner.align_graphs(
             shown_old_ids=False, save_to_file=True
         )
@@ -42,7 +46,7 @@ class HalluEvaluator:
             value for key, value in num_edit_operations.items() if key in match_strings
         )
 
-        num_nodes_edges = len(self.graphx2) + len(self.graphx2.edges())
+        num_nodes_edges = len(self.graphx1) + len(self.graphx1.edges())
 
         return (
             insert_substitue_ops,
@@ -72,13 +76,20 @@ class HalluEvaluator:
             len(value) for value in graph_keys_kept_same.values()
         )
 
-        key_hullucination = (
-            100 * number_graph_keys_inserted / number_graph_keys_kept_same
-        )
+
+        if number_graph_keys_kept_same + number_graph_keys_inserted == 0:
+            key_hullucination = float('inf')
+
+        else:
+            key_hullucination = (
+                100
+                * number_graph_keys_inserted
+                / (number_graph_keys_kept_same + number_graph_keys_inserted)
+            )
 
         return (
             number_graph_keys_inserted,
-            number_graph_keys_kept_same,
+            number_graph_keys_kept_same + number_graph_keys_inserted,
             key_hullucination,
             graph_keys_inserted,
             graph_keys_deleted,
@@ -96,7 +107,7 @@ class HalluEvaluator:
         )
 
         count = 0
-        total = 0
+        total = float('-inf')
 
         for key, value_list in similarities_dict.items():
             for _, number in value_list:
@@ -116,7 +127,7 @@ class HalluEvaluator:
 
         (
             num_graph_keys_inserted,
-            num_graph_keys_kept_same,
+            num_graph_keys_kept_same_and_inserted,
             key_hullucination,
             graph_keys_inserted,
             graph_keys_deleted,
@@ -135,7 +146,7 @@ class HalluEvaluator:
             num_nodes_edges,
             graph_hullucination,
             num_graph_keys_inserted,
-            num_graph_keys_kept_same,
+            num_graph_keys_kept_same_and_inserted,
             key_hullucination,
             num_value_below_threshold,
             total_value_count,
@@ -145,8 +156,12 @@ class HalluEvaluator:
     @staticmethod
     def test_calculate_value_hallucination():
         print("============Testing test_calcuate_value_hallucination")
-        graph_path1 = "testcase/STIXexp/4_GT.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/STIXexp/4_AI.json"  # Path to your graph JSON file
+        graph_path1 = (
+            "testcase/value_distance/01_a.json"  # Path to your graph JSON file
+        )
+        graph_path2 = (
+            "testcase/value_distance/01_b.json"  # Path to your graph JSON file
+        )
 
         halluEvaluator = HalluEvaluator(
             graph_pathA=graph_path1, graph_pathB=graph_path2
@@ -165,8 +180,8 @@ class HalluEvaluator:
     @staticmethod
     def test_calculate_graph_key_hullucination():
         print("============Testing test_calculate_graph_key_hullucination")
-        graph_path1 = "testcase/STIXexp/4_GT.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/STIXexp/4_AI.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/key_distance/03_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/key_distance/03_b.json"  # Path to your graph JSON file
 
         halluEvaluator = HalluEvaluator(
             graph_pathA=graph_path1, graph_pathB=graph_path2
@@ -191,8 +206,8 @@ class HalluEvaluator:
     @staticmethod
     def test_calculate_graph_key_hullucination_2():
         print("============Testing test_calculate_graph_key_hullucination_2")
-        graph_path1 = "testcase/STIXexp/7_GT.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/STIXexp/7_AI.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/key_distance/07_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/key_distance/07_b.json"  # Path to your graph JSON file
 
         halluEvaluator = HalluEvaluator(
             graph_pathA=graph_path1, graph_pathB=graph_path2
@@ -218,8 +233,8 @@ class HalluEvaluator:
     @staticmethod
     def test_calculate_graph_structural_hullucination():
         print("============Testing test_calculate_graph_edit_distance_details")
-        graph_path1 = "testcase/COT/3.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/COT/3_GEN.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
 
         halluEvaluator = HalluEvaluator(
             graph_pathA=graph_path1, graph_pathB=graph_path2
@@ -242,8 +257,9 @@ class HalluEvaluator:
     @staticmethod
     def test_summary():
         print("============Testing sumamry")
-        graph_path1 = "testcase/COT/3.json" # Path to your graph JSON file
-        graph_path2 = "testcase/COT/3_GEN.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/7.json" # Path to your graph JSON file
+        graph_path2 = "testcase/7_PRED.json"  # Path to your graph JSON file
+        #graph_path2 = "testcase/COT/3_COT.json"
 
         halluEvaluator = HalluEvaluator(
             graph_pathA=graph_path1, graph_pathB=graph_path2
@@ -276,13 +292,11 @@ class HalluEvaluator:
         print(total_value_count)
         print(value_hullucination)
 
-
-
 if __name__ == "__main__":
     # Usage example:
 
     # HalluEvaluator.test_calculate_value_hallucination()
     # HalluEvaluator.test_calculate_graph_key_hullucination()
     # HalluEvaluator.test_calculate_graph_key_hullucination_2()
-    HalluEvaluator.test_calculate_graph_structural_hullucination()
+    #HalluEvaluator.test_calculate_graph_structural_hullucination()
     HalluEvaluator.test_summary()

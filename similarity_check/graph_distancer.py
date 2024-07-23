@@ -10,15 +10,11 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
-
-import importlib
-import graph_aligner
 from utility import DFKGUtility
-
-importlib.reload(graph_aligner)
 
 
 class GraphDistancer:
+
     def __init__(
         self,
         graph_pathA=None,
@@ -364,8 +360,8 @@ class GraphDistancer:
 
     @staticmethod
     def test_get_aligned_values_from_aligned_node_or_edge():
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/test/05_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/test/05_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
         node1 = graph_dist.graph1[0]
@@ -383,8 +379,8 @@ class GraphDistancer:
     @staticmethod
     def test_calculate_value_similarities():
         print("============Testing test_calculate_value_similarities")
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/test/05_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/test/05_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
         node1 = graph_dist.graph1[0]
@@ -408,8 +404,8 @@ class GraphDistancer:
         print(
             "============Testing test_calculate_value_similarities_from_aligned_nodes"
         )
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/test/06_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/test/06_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
 
@@ -418,8 +414,8 @@ class GraphDistancer:
     @staticmethod
     def test_calculate_value_hallucination():
         print("============Testing test_calcuate_value_hallucination")
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/test/06_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/test/06_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
 
@@ -435,8 +431,8 @@ class GraphDistancer:
     @staticmethod
     def test_calculate_graph_key_distances():
         print("============Testing test_calculate_graph_key_distances")
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/key_distance/05_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/key_distance/05_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
 
@@ -456,8 +452,8 @@ class GraphDistancer:
     @staticmethod
     def test_calculate_graph_key_distances_2():
         print("============Testing test_calculate_graph_key_distances")
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/key_distance/07_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/key_distance/07_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
 
@@ -477,8 +473,8 @@ class GraphDistancer:
     @staticmethod
     def test_calculate_graph_key_hullucination():
         print("============Testing test_calculate_graph_key_hullucination")
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/key_distance/06_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/key_distance/06_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
 
@@ -505,8 +501,8 @@ class GraphDistancer:
     @staticmethod
     def test_calculate_graph_key_hullucination_2():
         print("============Testing test_calculate_graph_key_hullucination_2")
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/key_distance/07_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/key_distance/07_b.json"  # Path to your graph JSON file
 
         graph_dist = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
 
@@ -533,8 +529,8 @@ class GraphDistancer:
     @staticmethod
     def test_calculate_graph_edit_distance():
         print("============Testing test_calculate_graph_edit_distance")
-        graph_path1 = "testcase/node_distance/07_a.json"  # Path to your graph JSON file
-        graph_path2 = "testcase/node_distance/07_b.json"  # Path to your graph JSON file
+        graph_path1 = "testcase/node_distance/02_a.json"  # Path to your graph JSON file
+        graph_path2 = "testcase/node_distance/02_b.json"  # Path to your graph JSON file
 
         distancer = GraphDistancer(graph_pathA=graph_path1, graph_pathB=graph_path2)
         print(f"Edit distance: {distancer.calculate_graph_edit_distance()}")
@@ -577,14 +573,14 @@ class GraphDistancer:
 
 if __name__ == "__main__":
     # Usage example:
-    #GraphDistancer.test_get_aligned_values_from_aligned_node_or_edge()
-    #GraphDistancer.test_calculate_value_similarities()
-    GraphDistancer.test_calculate_value_similarities_from_aligned_nodes()
-    # # GraphDistancer.test_calculate_value_hallucination()
+    # GraphDistancer.test_get_aligned_values_from_aligned_node_or_edge()
+    # GraphDistancer.test_calculate_value_similarities()
+    # GraphDistancer.test_calculate_value_similarities_from_aligned_nodes()
+    # GraphDistancer.test_calculate_value_hallucination()
     # GraphDistancer.test_calculate_graph_key_distances()
     # GraphDistancer.test_calculate_graph_key_distances_2()
-    # # GraphDistancer.test_calculate_graph_key_hullucination()
-    # # GraphDistancer.test_calculate_graph_key_hullucination_2()
+    # GraphDistancer.test_calculate_graph_key_hullucination()
+    # GraphDistancer.test_calculate_graph_key_hullucination_2()
     # GraphDistancer.test_calculate_graph_edit_distance()
-    #GraphDistancer.test_calculate_graph_edit_distance_details()
-    #GraphDistancer.test_calculate_graph_structural_hullucination()
+    GraphDistancer.test_calculate_graph_edit_distance_details()
+    # GraphDistancer.test_calculate_graph_structural_hullucination()
