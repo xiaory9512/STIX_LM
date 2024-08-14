@@ -1,0 +1,75 @@
+[
+        {
+            "type": "threat-actor",
+            "id": "threat-actor--9a8a0d25-7636-429b-a99e-b2a73cd0f11f",
+            "name": "Adversary Bravo",
+            "description": "Adversary Bravo is known to use phishing attacks to deliver remote access malware to the targets.",
+            "threat_actor_types": [
+                "spy",
+                "criminal"
+            ]
+        },
+        {
+            "type": "malware",
+            "id": "malware--d1c612bc-146f-4b65-b7b0-9a54a14150a4",
+            "name": "Poison Ivy Variant d1c6",
+            "malware_types": [
+                "remote-access-trojan"
+            ],
+            "is_family": false,
+            "kill_chain_phases": [
+                {
+                    "kill_chain_name": "mandiant-attack-lifecycle-model",
+                    "phase_name": "initial-compromise"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "id": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5",
+            "name": "Phishing",
+            "description": "Spear phishing used as a delivery mechanism for malware.",
+            "kill_chain_phases": [
+                {
+                    "kill_chain_name": "mandiant-attack-lifecycle-model",
+                    "phase_name": "initial-compromise"
+                }
+            ],
+            "external_references": [
+                {
+                    "source_name": "capec",
+                    "description": "phishing",
+                    "url": "https://capec.mitre.org/data/definitions/98.html",
+                    "external_id": "CAPEC-98"
+                }
+            ]
+        },
+        {
+            "type": "identity",
+            "id": "identity--1621d4d4-b67d-41e3-9670-f01faf20d111",
+            "name": "Adversary Bravo",
+            "description": "Adversary Bravo is a threat actor that utilizes phishing attacks.",
+            "identity_class": "unknown"
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--d44019b6-b8f7-4cb3-837e-7fd3c5724b87",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--9a8a0d25-7636-429b-a99e-b2a73cd0f11f",
+            "target_ref": "malware--d1c612bc-146f-4b65-b7b0-9a54a14150a4"
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997f",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--9a8a0d25-7636-429b-a99e-b2a73cd0f11f",
+            "target_ref": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5"
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--56e5f1c8-08f3-4e24-9e8e-f87d844672ec",
+            "relationship_type": "attributed-to",
+            "source_ref": "threat-actor--9a8a0d25-7636-429b-a99e-b2a73cd0f11f",
+            "target_ref": "identity--1621d4d4-b67d-41e3-9670-f01faf20d111"
+        }
+]
