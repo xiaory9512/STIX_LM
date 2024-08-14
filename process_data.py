@@ -1,11 +1,18 @@
 import dspy
-
-GPT3 = dspy.OpenAI(model='gpt-3.5-turbo', max_tokens=2000)
-colbertv2 = dspy.ColBERTv2(url='http://20.102.90.50:2017/wiki17_abstracts')
-dspy.settings.configure(rm=colbertv2, lm=GPT3)
-
 import os
 import json
+
+#latest version of model
+#using different case to test few shot
+#change the format of text input
+#llama3.1 or Genmma 2
+#gpt-3.5-turbo
+#GPT3 = dspy.OpenAI(model='gpt-3.5-turbo', max_tokens=2500)
+GPT4 = dspy.OpenAI(model='gpt-4-turbo', max_tokens=2500)
+#llama3 = dspy.Llama(model='llama3')
+colbertv2 = dspy.ColBERTv2(url='http://20.102.90.50:2017/wiki17_abstracts')
+#colbertv2 = dspy.ColBERTv2(url='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_k017w16zutw')
+dspy.settings.configure(rm=colbertv2, lm=GPT4)
 
 
 class STIXDataset:
@@ -38,66 +45,165 @@ class STIXDataset:
     def __len__(self):
         return len(self.data)
 
+class OneShotRetriever(dspy.Retrieve):
+    def __init__(self, example):
+        super().__init__()
+        self.example = example
 
-folder_path = os.path.join(os.getcwd(), 'data')
+    def forward(self, query):
+        # Here we could use the query to determine if we should return the example
+        # For demonstration, let's just print the query
+        # print(f"Retrieval query: {query}")
+        one_example = f"Example scenairo: {self.example.question}\n Example generated STIX in JSON based on the scenairo: {self.example.answer}\n"
+        return one_example
+
+
+folder_path = os.path.join(os.getcwd(), 'Process_data/4')
+output_dir = folder_path
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 train_data = STIXDataset(folder_path)
 print(len(train_data))
 print(train_data)
-print(train_data[0])
+#print(train_data[0])
 
 #train = [dspy.Example(question=question, answer=answer).with_inputs('question') for question, answer in train_data]
 train = [dspy.Example(question=question, answer=answer).with_inputs('question') for question, answer, _ in train_data]
+print("===")
+print(train[0])
+
+tune_data = STIXDataset(os.path.join(os.getcwd(), 'Process_data/one_shot_material'))
+print(tune_data)
+tune_materials = [dspy.Example(question=question, answer=answer).with_inputs('question') for question, answer, _ in tune_data]
+print(f"examples: {tune_materials}")
+tune_material = tune_materials[0]
 
 
 
-class BasicQA(dspy.Signature):
+class BasicSITXGenerator(dspy.Signature):
     """Analyze the scenario to construct a graph in STIX JSON format with several objects."""
 
     question = dspy.InputField()
-    answer = dspy.OutputField(desc="A list of valid json objects. Output must be like '[object1, object2...]'.Each object must have an unique ID.")
+    answer = dspy.OutputField(desc="A list of valid json objects. Output must be like '[object1, object2...]'.Each object must have an unique ID. Each relationship must connect two evience entities in the list.")
     # A list include valid json objects.
     #Start with single object. Each STIX object must has to have an ID.
 
+class SITXGeneratorSig(dspy.Signature):
+    #"""Describe a conversation in STIX, which stands for Structured Threat Information eXpression, is a standardized language for representing cyber threat information."""
+    """Analyze the scenario to construct a graph in STIX JSON format with several objects."""
+    # Make sure to define context here, otherwise, one-short learning won't work
+    context = dspy.InputField(desc="one example, which contains a scenario and the corresponding STIX in JSON")
 
-# Assume dspy.Predict is correctly defined to use a model or some logic to generate answers
-generate_answer = dspy.Predict(BasicQA)
+    question: str = dspy.InputField(
+        desc="a scenario describes a cyber crime"
+    )
 
-pred = generate_answer(question=train[2].question)
+    answer: str = dspy.OutputField(
+        desc="the formalized STIX in JSON representing cyber threat information based on the scenario, e.g., [{object 1}, {object 2}, ... {object n}]"
+    )
 
-import os
-import json
 
-output_dir = os.path.join(os.getcwd(), 'AI_gen')
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
+class STIXPoTSig(dspy.Signature):
+    """Analyze the scenario to construct a graph in STIX JSON with several objects."""
+    context = dspy.InputField(desc="Contextual example for learning")
+    question = dspy.InputField(desc="A scenario describing a cyber crime")
+    answer = dspy.OutputField(desc="the formalized STIX in JSON representing cyber threat information based on the scenario, follow the format of [{object 1}, {object 2}, ... {object n}]")
 
-train_data = STIXDataset("D://LLM//STIX_official_example//examples//all_examples")
-train = [dspy.Example(question=question, answer=answer).with_inputs('question') for question, answer, _ in train_data]
+
+class STXIGenCoT(dspy.Module):
+    def __init__(self, example):
+        super().__init__()
+        self.retriever = OneShotRetriever(example)
+        self.predictor = dspy.ChainOfThought(SITXGeneratorSig)
+
+    def forward(self, question):
+        context = self.retriever(question)
+        results = self.predictor(context=context, question=question)
+
+        return results
+
+
+class STIXGenPoT(dspy.Module):
+    def __init__(self, example):
+        super().__init__()
+        self.retriever = OneShotRetriever(example)
+        self.predictor = dspy.ProgramOfThought(STIXPoTSig)
+
+    def forward(self, question):
+        context = self.retriever(question)
+        results = self.predictor(context=context, question=question)
+        return results
+
+
+OneShotModule = STXIGenCoT(tune_material)
+#train_data = STIXDataset("D://LLM//STIX_official_example//examples//all_examples")
+#train_data = STIXDataset("D:\\ML\\dspy_dfkg_new\\Process_data\\data6")
+#train = [dspy.Example(question=question, answer=answer).with_inputs('question') for question, answer, _ in train_data]
 
 for example, (_, _, original_text_file) in zip(train, train_data):
-    pred = generate_answer(question=example.question)
-    output_filename = original_text_file.replace('.txt', '_GEN.json')
-    output_path = os.path.join(output_dir, output_filename)
-    print(type(pred.answer))
-    print(pred.answer)
+    generate_answer_Vanila_Predict = dspy.Predict(BasicSITXGenerator)
+    pred_Valina_pred = generate_answer_Vanila_Predict(question=example.question)
+    output_path_Valina_pred = os.path.join(output_dir, original_text_file.replace('.txt', '_Vanila_Predict.json'))
+    print("==valina Predict==")
+    with open(output_path_Valina_pred, 'w', encoding='utf-8') as f:
+        f.write(pred_Valina_pred.answer)
+
+    generate_answer_Vanila_COT = dspy.ChainOfThought(BasicSITXGenerator)
+    #print(GPT4.inspect_history(n=2))
+    pred_Vanila_COT = generate_answer_Vanila_COT(question=example.question)
+    output_path_Vanila_COT = os.path.join(output_dir, original_text_file.replace('.txt', '_Vanila_COT.json'))
+    #print(type(pred_Vanila_COT.answer))
+    #print(pred_Vanila_COT.answer)
+    print("==vanila COT==")
+    with open(output_path_Vanila_COT, 'w', encoding='utf-8') as f:
+        f.write(pred_Vanila_COT.answer)
+
+    generate_answer_Oneshot_Predict = dspy.Predict(SITXGeneratorSig)
+    pred_Oneshot_Predict = generate_answer_Oneshot_Predict(question=example.question)
+    output_path_Oneshot_Predict = os.path.join(output_dir, original_text_file.replace('.txt', '_Oneshot_Predict.json'))
+    # print(type(pred_Oneshot_COT.answer))
+    print(pred_Oneshot_Predict.answer)
+    print("==Oneshot Predict==")
+    with open(output_path_Oneshot_Predict, 'w', encoding='utf-8') as f:
+        f.write(pred_Oneshot_Predict.answer)
 
 
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(pred.answer)
+    generate_answer_Oneshot_COT = dspy.ChainOfThought(SITXGeneratorSig)
+    pred_Oneshot_COT = OneShotModule(question=example.question)
+    output_path_Oneshot_COT = os.path.join(output_dir, original_text_file.replace('.txt', '_Oneshot_COT.json'))
+    #print(type(pred_Oneshot_COT.answer))
+    print(pred_Oneshot_COT.answer)
+    print("==Oneshot COT==")
+    with open(output_path_Oneshot_COT, 'w', encoding='utf-8') as f:
+        f.write(pred_Oneshot_COT.answer)
 
-for example, (_, _, original_text_file) in zip(train, train_data):
-    generate_answer_with_chain_of_thought = dspy.ChainOfThought(BasicQA)
-    pred = generate_answer_with_chain_of_thought(question=example.question)
-    output_filename = original_text_file.replace('.txt', '_COT.json')
-    output_path1 = os.path.join(output_dir, output_filename)
-    print(type(pred.answer))
-    print(pred.answer)
+    generate_answer_Oneshot_POT = dspy.ProgramOfThought(STIXPoTSig)
+    pred_Oneshot_POT = OneShotModule(question=example.question)
+    output_path_Oneshot_POT = os.path.join(output_dir, original_text_file.replace('.txt', '_Oneshot_POT.json'))
+    print(pred_Oneshot_POT.answer)
+    print("==Oneshot POT==")
+    with open(output_path_Oneshot_POT, 'w', encoding='utf-8') as f:
+        f.write(pred_Oneshot_POT.answer)
 
-    with open(output_path1, 'w', encoding='utf-8') as f:
-        f.write(pred.answer)
-#     with open(output_path, 'w', encoding='utf-8') as f:
-#         json.dump(pred.answer, f, ensure_ascii=False, indent=4)
-# print(json.dumps(pred.answer, ensure_ascii=False, indent=4))
+    # #Zero shot Program of thoughts
+    # generate_answer_Vanila_POT= dspy.ProgramOfThought(BasicSITXGenerator)
+    # pred_Vanila_POT = generate_answer_Vanila_POT(question=example.question)
+    # output_path_Vanila_POT = os.path.join(output_dir, original_text_file.replace('.txt', '_Vanila_POT.json'))
+    # # print(type(pred_Vanila_COT.answer))
+    # # print(pred_Vanila_COT.answer)
+    # print("==vanila POT==")
+    # with open(output_path_Vanila_POT, 'w', encoding='utf-8') as f:
+    #     f.write(pred_Vanila_POT.answer)
+    #
+    # #One shot Porgram of thoughts
+    # generate_answer_Oneshot_POT = dspy.ProgramOfThought(SITXGeneratorSig)
+    # pred_Oneshot_POT = OneShotModule(question=example.question)
+    # output_path_Oneshot_POT = os.path.join(output_dir, original_text_file.replace('.txt', '_Oneshot_POT.json'))
+    # # print(type(pred_Oneshot_COT.answer))
+    # print(pred_Oneshot_POT.answer)
+    # print("==Oneshot POT==")
+    # with open(output_path_Oneshot_POT, 'w', encoding='utf-8') as f:
+    #     f.write(pred_Oneshot_POT.answer)
 
 
 
