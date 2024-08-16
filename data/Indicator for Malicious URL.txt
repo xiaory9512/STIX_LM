@@ -1,0 +1,1 @@
+This scenario consists of a malicious site hosting downloader, as for the URL http://x4z9arb.cn/4712/, which is known to be malicious, and a backdoor piece of malware associated with the URL, and this malicious software name as (x4z9zrb backdoor). The site has been shown to host this backdoor malware, and the malware has been known to download remote files.
