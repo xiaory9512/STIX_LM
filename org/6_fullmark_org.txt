@@ -1,0 +1,7 @@
+On February 27, 2017, a collaboration between organization Pym Technologies and organization Oscorp Industries helped identify a serious cybersecurity threat. Pym Technologies alerted Oscorp Industries about the presence of a remote-access-trojan named "Online Job Site Trojan." This malware was disguised as a resume.pdf file, designed to lure unsuspecting users into downloading it. Once executed, it also created a suspicious registry key: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WSALG2.
+
+Oscorp Industries' detection team first encountered this malware during their regular network scans. The file was recognized by its unique MD5 hash 1717b7fff97d37a1e1a0029d83492de1 and SHA-1 hash c79a326f8411e9488bdc3779753e1e3489aaedea. The sighting occurred between February 28, 2017, at 19:07:24.856 and 19:07:24.857, confirming the Trojan's presence on their systems.
+
+Following this, Oscorp issued a formal sighting report and associated observed data, affirming that their systems had been affected by the Trojan, as indicated by matching the file hashes and the suspicious registry key. The observed data, created by Oscorp Industries, was recorded on February 27, 2017.
+
+This incident highlights the value of cross-company collaboration in cybersecurity. The joint efforts of Pym Technologies and Oscorp Industries in sharing threat intelligence and confirming the presence of malicious software reinforce the need for continuous vigilance against cyber threats in the technology sector.

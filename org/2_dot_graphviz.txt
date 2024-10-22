@@ -1,0 +1,28 @@
+digraph {
+0 [label="threat-actor: Fake BPP (Branistan Peoples Party)"];
+1 [label="identity: Franistan Intelligence"];
+2 [label="identity: Branistan Peoples Party"];
+3 [label="attack-pattern: Content Spoofing"];
+4 [label="attack-pattern: HTTP Flood"];
+5 [label="campaign: Operation Bran Flakes"];
+6 [label="campaign: Operation Raisin Bran"];
+7 [label="intrusion-set: APT BPP"];
+5 -> 0 [label="attributed-to"];
+6 -> 0 [label="attributed-to"];
+5 -> 7 [label="attributed-to"];
+6 -> 7 [label="attributed-to"];
+7 -> 0 [label="attributed-to"];
+7 -> 2 [label="targets"];
+7 -> 3 [label="uses"];
+7 -> 4 [label="uses"];
+5 -> 2 [label="targets"];
+6 -> 2 [label="targets"];
+5 -> 3 [label="uses"];
+6 -> 4 [label="uses"];
+0 -> 2 [label="impersonates"];
+0 -> 2 [label="targets"];
+0 -> 1 [label="attributed-to"];
+6 -> 2 [label="targets"];
+0 -> 3 [label="uses"];
+0 -> 4 [label="uses"];
+}

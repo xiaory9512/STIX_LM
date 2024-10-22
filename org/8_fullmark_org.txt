@@ -1,0 +1,5 @@
+On April 14, 2017, a report was issued by Stark Industries, an organization specializing in defense. Stark Industries identified a malicious activity originating from the IP address 10.0.0.0, which was flagged for suspicious behavior. The detected malicious activity from this IP address prompted the company to mark the information under a TLP: AMBER protocol, limiting its dissemination.
+
+To further secure the data, a notice was distributed via info@stark.com, ensuring that recipients follow the amber level security guidelines. Stark Industries' document also contained a statement: "Copyright (c) Stark Industries 2017.". This statement reinforced their control over the shared information, ensuring compliance with copyright regulations.
+
+The report serves as a precautionary measure, and all entities involved are required to follow the indicated guidelines for handling sensitive data related to this malicious-activity.

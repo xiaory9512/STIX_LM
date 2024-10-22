@@ -1,0 +1,20 @@
+digraph {
+0 [label="identity: Pym Technologies"];
+1 [label="identity: Oscorp Industries"];
+2 [label="malware: Online Job Site Trojan"];
+3 [label="file: resume.pdf"];
+4 [label="observed-data: "];
+5 [label="sighting: "];
+6 [label="windows-registry-key: "];
+7 [label="observed-data: "];
+2 -> 0 [label="created_by_ref: identity--7865b6d2-a4af-45c5-b582-afe5ec376c33"];
+4 -> 1 [label="created_by_ref: identity--987eeee1-413a-44ac-96cc-0a8acdcc2f2c"];
+4 -> 3 [label="object_refs: file--364fe3e5-b1f4-5ba3-b951-ee5983b3538d"];
+5 -> 1 [label="created_by_ref: identity--987eeee1-413a-44ac-96cc-0a8acdcc2f2c"];
+5 -> 2 [label="sighting_of_ref: malware--ae560258-a5cb-4be8-8f05-013d6712295f"];
+5 -> 4 [label="observed_data_refs: observed-data--cf8eaa41-6f4c-482e-89b9-9cd2d6a83cb1"];
+5 -> 7 [label="observed_data_refs: observed-data--a0d34360-66ad-4977-b255-d9e1080421c4"];
+5 -> 1 [label="where_sighted_refs: identity--987eeee1-413a-44ac-96cc-0a8acdcc2f2c"];
+7 -> 1 [label="created_by_ref: identity--987eeee1-413a-44ac-96cc-0a8acdcc2f2c"];
+7 -> 6 [label="object_refs: windows-registry-key--16b80d14-d574-5620-abad-10ff304b1c26"];
+}

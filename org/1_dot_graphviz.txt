@@ -1,0 +1,5 @@
+digraph {
+0 [label="threat-actor: Disco Team Threat Actor Group"];
+1 [label="identity: Disco Team"];
+0 -> 1 [label="attributed-to"];
+}

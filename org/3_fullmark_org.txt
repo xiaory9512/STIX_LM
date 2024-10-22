@@ -1,0 +1,5 @@
+In 2014, an organized group was identified as operating a malicious site hosting a downloader at http://x4z9arb.cn/4712/. This website was part of a broader effort by the group, whose activities aimed at creating profit from all types of crime. The malicious site is known to distribute a specific backdoor malware, named "x4z9arb backdoor," designed to establish a foothold on compromised systems.
+
+The malware, classified as both a backdoor and a remote-access-trojan (RAT), allows remote attackers to gain unauthorized access, where they can download additional malicious files. The backdoor was active during the "establish-foothold" phase in the Mandiant Attack Lifecycle Model.
+
+Additionally, a key indicates connected this website and the x4z9arb backdoor, further highlighting the malicious activity surrounding this organized threat actor group. This indicator, valid from June 29, 2014, plays a critical role in monitoring ongoing cyber threats.

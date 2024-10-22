@@ -1,0 +1,9 @@
+The Fake BPP (Branistan Peoples Party), identified as a nation-state threat actor, is suspected of influencing the election in Branistan. This group, acting under ideology and seeking dominance, has engaged in sophisticated attacks aimed at disrupting the Branistan Peoples Party (BPP).
+
+Notably, the Franistan Intelligence, an organization, has been linked to the threat actor through multiple cyber operations. Two prominent campaigns were identified: Operation Bran Flakes, initiated on 2016-01-08, which aimed to hack and insert false information on the website, and Operation Raisin Bran, launched on 2016-02-07, designed to conduct a DDOS attack to flood www.bpp.bn.
+
+The APT BPP, also known as Bran-teaser, is a government-backed intrusion set targeting the Branistan election and attempting to disrupt the BPP through strategic use of Content Spoofing and HTTP Flood attacks.
+
+These campaigns used advanced attack methods such as Content Spoofing (CAPEC-148) and HTTP Flood (CAPEC-488). All operations appear to be primarily motivated by the Fake BPP's desire for dominance in Branistan's political landscape.
+
+The Branistan Peoples Party continues to be the primary target of these attacks, with persistent efforts from the Fake BPP to impersonate their identity and manipulate the public's perception of their policies.
