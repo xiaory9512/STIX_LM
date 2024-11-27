@@ -1,0 +1,30 @@
+[
+    {
+        "type": "indicator",
+        "id": "indicator--a932fcc6-e032-476c-826f-cb970a5a1ade",
+        "name": "File hash for Poison Ivy variant",
+        "indicator_types": [
+            "malicious-activity"
+        ],
+        "pattern": "[file:hashes.'SHA-256' = 'ef537f25c895bfa782526529a9b63d97aa631564d5d789c2b765448c8635fb6c']",
+        "pattern_type": "stix",
+        "valid_from": "2014-02-20T09:00:00Z",
+        "confidence": 85
+    },
+    {
+        "type": "malware",
+        "id": "malware--fdd60b30-b67c-41e3-b0b9-f01faf20d111",
+        "name": "Poison Ivy",
+        "malware_types": [
+            "remote-access-trojan"
+        ]
+    },
+    {
+        "type": "relationship",
+        "spec_version": "2.1",
+        "id": "relationship--29dcdf68-1b0c-4e16-94ed-bcc7a9572f69",
+        "relationship_type": "indicates",
+        "source_ref": "indicator--a932fcc6-e032-476c-826f-cb970a5a1ade",
+        "target_ref": "malware--fdd60b30-b67c-41e3-b0b9-f01faf20d111"
+    }
+]

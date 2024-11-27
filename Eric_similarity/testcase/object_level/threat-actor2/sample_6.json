@@ -1,0 +1,28 @@
+{
+    "type": "threat-actor",
+    "id": "threat-actor--1",
+    "name": "Disco Team Threat Actor Group",
+    "description": "This organized threat actor group operates to create profit from all types of crime.",
+    "aliases": [
+        "Equipo del Discoteca"
+    ],
+    "threat_actor_types": [
+        "financial-crime"
+    ],
+    "goals": [
+        "Steal Credit Card Information",
+        "Launder Money"
+    ],
+    "sophistication": "novice",
+    "resource_level": "organization",
+    "primary_motivation": "ideological",
+    "secondary_motivations": [
+        "personal-satisfaction"
+    ],
+    "roles": [
+        "hacker",
+        "spammer"
+    ],
+    "first_seen": "2023-01-01T00:00:00Z",
+    "last_seen": "2024-01-01T00:00:00Z"
+}

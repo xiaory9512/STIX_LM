@@ -1,0 +1,34 @@
+[
+    {
+        "type": "identity",
+        "id": "identity--7865b6d2-a4af-45c5-b582-afe5ec376c33",
+        "name": "Pym Tech LLC",
+        "identity_class": "organization",
+        "sectors": [
+            "finance"
+        ],
+        "contact_information": "contact@pymtech.com"
+    },
+    {
+        "type": "identity",
+        "spec_version": "2.1",
+        "id": "identity--987eeee1-413a-44ac-96cc-0a8acdcc2f2c",
+        "name": "Oscorp Industries",
+        "identity_class": "organization",
+        "sectors": [
+            "technology"
+        ],
+        "contact_information": "norman@oscorp.com"
+    },
+    {
+        "type": "malware",
+        "id": "malware--ae560258-a5cb-4be8-8f05-013d6712295f",
+        "created_by_ref": "identity--7865b6d2-a4af-45c5-b582-afe5ec376c33",
+        "name": "Online Job Site Trojan",
+        "description": "A Trojan disguised as a benign resume file.",
+        "malware_types": [
+            "trojan"
+        ],
+        "is_family": true
+    }
+]

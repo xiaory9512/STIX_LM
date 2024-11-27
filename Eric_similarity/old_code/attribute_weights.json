@@ -1,0 +1,36 @@
+{
+    "indicator": {
+        "required": {
+            "pattern": 0.15,
+            "pattern_type": 0.08,
+            "valid_from": 0.08
+        },
+        "optional": {
+            "name": 0.07,
+            "description": 0.07,
+            "indcator_types": 0.01,
+            "pattern_version": 0.01,
+            "valid_until": 0.01,
+            "kill_chain_phases": 0.02
+        }
+    },
+    "threat-actor": {
+        "required": {
+            "name": 0.25
+        },
+        "optional": {
+            "description": 0.10,
+            "threat_actor_types": 0.02,
+            "aliases": 0.02,
+            "first_seen": 0.01,
+            "last_seen": 0.01,
+            "roles": 0.02,
+            "goals": 0.02,
+            "sophistication": 0.02,
+            "resource_level": 0.01,
+            "primary_motivation": 0.01,
+            "secondary_motivations": 0.01,
+            "personal_motivations": 0.01
+        }
+    }
+}

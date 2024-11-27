@@ -1,0 +1,31 @@
+[
+    {
+        "type": "indicator",
+        "id": "indicator--a932fcc6-e032-476c-826f-cb970a5a1ade",
+        "name": "Suspicious hash linked to malware",
+        "description": "This file hash might represent a potential threat.",
+        "indicator_types": [
+            "suspicious-activity"
+        ],
+        "pattern": "[file:hashes.'SHA-256' = 'abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890']",
+        "pattern_type": "stix",
+        "valid_from": "2014-05-01T12:00:00Z"
+    },
+    {
+        "type": "malware",
+        "id": "malware--fdd60b30-b67c-41e3-b0b9-f01faf20d111",
+        "name": "Generic RAT",
+        "malware_types": [
+            "trojan"
+        ],
+        "is_family": true
+    },
+    {
+        "type": "relationship",
+        "spec_version": "2.1",
+        "id": "relationship--29dcdf68-1b0c-4e16-94ed-bcc7a9572f69",
+        "relationship_type": "indicates",
+        "source_ref": "indicator--a932fcc6-e032-476c-826f-cb970a5a1ade",
+        "target_ref": "malware--fdd60b30-b67c-41e3-b0b9-f01faf20d111"
+    }
+]

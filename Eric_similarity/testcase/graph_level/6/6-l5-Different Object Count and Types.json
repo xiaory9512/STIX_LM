@@ -1,0 +1,42 @@
+[
+    {
+        "type": "identity",
+        "id": "identity--7865b6d2-a4af-45c5-b582-afe5ec376c33",
+        "name": "Stark Industries",
+        "identity_class": "organization",
+        "sectors": [
+            "technology"
+        ],
+        "contact_information": "support@starkindustries.com"
+    },
+    {
+        "type": "malware",
+        "id": "malware--ae560258-a5cb-4be8-8f05-013d6712295f",
+        "name": "Iron Trojan",
+        "malware_types": [
+            "trojan"
+        ],
+        "is_family": false
+    },
+    {
+        "type": "tool",
+        "id": "tool--db0e1c11-6c30-4f74-9177-c5d7f2a26e98",
+        "name": "Network Scanner",
+        "tool_types": [
+            "network"
+        ],
+        "description": "A tool used for scanning network vulnerabilities."
+    },
+    {
+        "type": "observed-data",
+        "id": "observed-data--cf8eaa41-6f4c-482e-89b9-9cd2d6a83cb1",
+        "created_by_ref": "identity--7865b6d2-a4af-45c5-b582-afe5ec376c33",
+        "first_observed": "2017-02-27T21:37:11.213Z",
+        "last_observed": "2017-02-27T21:37:11.214Z",
+        "number_observed": 2,
+        "object_refs": [
+            "tool--db0e1c11-6c30-4f74-9177-c5d7f2a26e98",
+            "file--364fe3e5-b1f4-5ba3-b951-ee5983b3538d"
+        ]
+    }
+]

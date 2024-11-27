@@ -1,0 +1,28 @@
+{
+    "type": "threat-actor",
+    "id": "threat-actor--1",
+    "name": "Disco Team Threat Actor Group",
+    "description": "A criminal group focused on financial benefits.",
+    "aliases": [
+        "Equipo del Discoteca"
+    ],
+    "threat_actor_types": [
+        "financial-crime"
+    ],
+    "goals": [
+        "Obtain Sensitive Financial Information",
+        "Money Laundering"
+    ],
+    "sophistication": "expert",
+    "resource_level": "organization",
+    "primary_motivation": "wealth-acquisition",
+    "secondary_motivations": [
+        "personal-satisfaction"
+    ],
+    "roles": [
+        "operator",
+        "planner"
+    ],
+    "first_seen": "2023-01-01T00:00:00Z",
+    "last_seen": "2024-01-01T00:00:00Z"
+}

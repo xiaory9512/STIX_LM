@@ -1,0 +1,55 @@
+[
+    {
+        "type": "identity",
+        "id": "identity--7865b6d2-a4af-45c5-b582-afe5ec376c33",
+        "name": "Pym Technologies",
+        "identity_class": "organization",
+        "sectors": [
+            "tech"
+        ],
+        "contact_information": "hank@pymtech.com"
+    },
+    {
+        "type": "identity",
+        "spec_version": "2.1",
+        "id": "identity--987eeee1-413a-44ac-96cc-0a8acdcc2f2c",
+        "name": "Oscorp Industries",
+        "identity_class": "organization",
+        "sectors": [
+            "technology"
+        ],
+        "contact_information": "norman@oscorp.com"
+    },
+    {
+        "type": "malware",
+        "id": "malware--ae560258-a5cb-4be8-8f05-013d6712295f",
+        "created_by_ref": "identity--7865b6d2-a4af-45c5-b582-afe5ec376c33",
+        "name": "Online Job Site Trojan",
+        "description": "A Trojan disguised as an executable file named resume.pdf, which also creates a registry entry.",
+        "malware_types": [
+            "remote-access-trojan"
+        ],
+        "is_family": false
+    },
+    {
+        "type": "file",
+        "id": "file--364fe3e5-b1f4-5ba3-b951-ee5983b3538d",
+        "hashes": {
+            "MD5": "1717b7fff97d37a1e1a0029d83492de1",
+            "SHA-1": "c79a326f8411e9488bdc3779753e1e3489aaedea"
+        },
+        "size": 83968,
+        "name": "resume.pdf"
+    },
+    {
+        "type": "observed-data",
+        "id": "observed-data--cf8eaa41-6f4c-482e-89b9-9cd2d6a83cb1",
+        "created_by_ref": "identity--987eeee1-413a-44ac-96cc-0a8acdcc2f2c",
+        "first_observed": "2017-02-27T21:37:11.213Z",
+        "last_observed": "2017-02-27T21:37:11.213Z",
+        "number_observed": 1,
+        "object_refs": [
+            "file--364fe3e5-b1f4-5ba3-b951-ee5983b3538d"
+        ]
+    }
+]

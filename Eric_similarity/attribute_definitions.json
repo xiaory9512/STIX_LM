@@ -1,0 +1,88 @@
+{
+  "attack-pattern": {
+    "required_attributes": ["type", "name"],
+    "optional_attributes": ["description", "aliases", "kill_chain_phases", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked", "labels", "confidence", "lang"]
+  },
+  "campaign": {
+    "required_attributes": ["type", "name"],
+    "optional_attributes": ["description", "aliases", "first_seen", "last_seen", "objective", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "course-of-action": {
+    "required_attributes": ["type", "name"],
+    "optional_attributes": ["description", "action", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "grouping": {
+    "required_attributes": ["type", "name", "context", "object_refs"],
+    "optional_attributes": ["description", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "identity": {
+    "required_attributes": ["type", "name", "identity_class"],
+    "optional_attributes": ["description",
+      "roles", "sectors", "contact_information", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "incident": {
+    "required_attributes": ["type", "name"],
+    "optional_attributes": ["description", "incident_type", "aliases", "first_seen", "last_seen", "objective", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "indicator": {
+    "required_attributes": ["type", "pattern", "pattern_type", "valid_from"],
+    "optional_attributes": ["name", "description", "indicator_types", "pattern_version", "valid_until", "kill_chain_phases", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "infrastructure": {
+    "required_attributes": ["type", "name", "infrastructure_types"],
+    "optional_attributes": ["description", "aliases", "kill_chain_phases", "first_seen", "last_seen", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "intrusion-set": {
+    "required_attributes": ["type", "name"],
+    "optional_attributes": ["description", "aliases", "first_seen", "last_seen", "goals", "resource_level", "primary_motivation", "secondary_motivations", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "location": {
+    "required_attributes": ["type"],
+    "optional_attributes": ["name", "description", "latitude", "longitude", "region", "country", "administrative_area", "city", "street_address", "postal_code", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "malware": {
+    "required_attributes": [
+      "type",
+    "is_family"
+    ],
+    "optional_attributes": [
+      "description",
+      "malware_types",
+      "aliases",
+      "kill_chain_phases",
+      "first_seen",
+      "last_seen",
+      "architecture_execution_envs",
+      "implementation_languages",
+      "capabilities",
+      ""
+      ]
+  },
+  "malware-analysis": {
+    "required_attributes": ["type", "product"],
+    "optional_attributes": ["host_vm_ref", "operating_system_ref", "installed_software_refs", "configuration_version", "analysis_engine_version", "analysis_definition_version", "submitted", "analysis_started", "analysis_ended", "result_name", "result", "labels", "confidence", "lang", "external_references", "object_marking_refs", "granular_markings", "created", "modified", "revoked"]
+  },
+  "threat-actor": {
+    "required_attributes": [
+      "type",
+      "name"
+    ],
+    "optional_attributes": [
+      "description",
+      "threat_actor_types",
+      "aliases",
+      "first_seen",
+      "last_seen",
+      "roles",
+      "goals",
+      "sophistication",
+      "resource_level",
+      "primary_motivation",
+      "secondary_motivations",
+      "personal_motivations"
+    ]
+  }
+
+
+
+}

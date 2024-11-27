@@ -1,0 +1,33 @@
+[
+    {
+        "type": "indicator",
+        "id": "indicator--9299f726-ce06-492e-8472-2b52ccb53191",
+        "created_by_ref": "identity--39012926-a052-44c4-ae48-caaf4a10ee6e",
+        "name": "Malicious Domain",
+        "indicator_types": [
+            "malicious-activity"
+        ],
+        "pattern": "[domain:value = 'maliciousdomain.com']",
+        "valid_from": "2016-01-15T14:20:00Z",
+        "confidence": 90
+    },
+    {
+        "type": "identity",
+        "id": "identity--39012926-a052-44c4-ae48-caaf4a10ee6e",
+        "name": "Alpha Threat Analysis Org.",
+        "roles": [
+            "Cyber Security"
+        ],
+        "identity_class": "organization",
+        "sectors": [
+            "technology"
+        ]
+    },
+    {
+        "type": "sighting",
+        "id": "sighting--8356e820-8080-4692-aa91-ecbe94006833",
+        "first_seen": "2017-02-27T21:37:11.213Z",
+        "count": 1,
+        "sighting_of_ref": "indicator--9299f726-ce06-492e-8472-2b52ccb53191"
+    }
+]
