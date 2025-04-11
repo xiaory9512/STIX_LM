@@ -1,0 +1,193 @@
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=marking-definition--dc1b5371-1918-4e57-93f2-25d1d78d983f (type=marking-definition)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=marking-definition--dc1b5371-1918-4e57-93f2-25d1d78d983f (type=marking-definition)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=marking-definition--dc1b5371-1918-4e57-93f2-25d1d78d983f (type=marking-definition)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=report--c6c7ebc4-3f65-4375-b22d-313e894ab3d5 (type=report)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=report--c6c7ebc4-3f65-4375-b22d-313e894ab3d5 (type=report)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=report--c6c7ebc4-3f65-4375-b22d-313e894ab3d5 (type=report)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=malware--efd5ac80-79ba-45cc-9293-01460ad85303 (type=malware)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=malware--efd5ac80-79ba-45cc-9293-01460ad85303 (type=malware)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=malware--efd5ac80-79ba-45cc-9293-01460ad85303 (type=malware)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Same type => Base similarity = 0.5
+        -> Attribute 'type': weight=0.100, value1=malware, value2=malware
+           attr_sim=1.000, similarity update: 0.500 -> 0.600
+        -> Attribute 'created': weight=0.100, value1=2017-07-18T22:00:30.405Z, value2=2010-03-01T00:00:00.000Z
+           attr_sim=0.000, similarity update: 0.600 -> 0.600
+        -> Attribute 'modified': weight=0.100, value1=2017-07-18T22:00:30.405Z, value2=2010-03-01T00:00:00.000Z
+           attr_sim=0.000, similarity update: 0.600 -> 0.600
+        -> Attribute 'name': weight=0.050, value1=IMDDOS, value2=IMDDOS Malware
+           attr_sim=0.150, similarity update: 0.600 -> 0.607
+        => Final node similarity: 0.607
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=threat-actor--e234c322-0981-4aa4-ae03-f4037e6be83f (type=threat-actor)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Same type => Base similarity = 0.5
+        -> Attribute 'type': weight=0.111, value1=threat-actor, value2=threat-actor
+           attr_sim=1.000, similarity update: 0.500 -> 0.611
+        -> Attribute 'created': weight=0.111, value1=2017-07-18T22:00:30.405Z, value2=2010-09-13T00:00:00.000Z
+           attr_sim=0.000, similarity update: 0.611 -> 0.611
+        -> Attribute 'modified': weight=0.111, value1=2017-07-18T22:00:30.405Z, value2=2010-09-13T00:00:00.000Z
+           attr_sim=0.000, similarity update: 0.611 -> 0.611
+        -> Attribute 'name': weight=0.111, value1=(Unnamed) IMDDOS Threat Actor, value2=IMDDOS Botnet Operator
+           attr_sim=0.081, similarity update: 0.611 -> 0.620
+        => Final node similarity: 0.620
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=threat-actor--e234c322-0981-4aa4-ae03-f4037e6be83f (type=threat-actor)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=threat-actor--e234c322-0981-4aa4-ae03-f4037e6be83f (type=threat-actor)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=location--07608992-927e-434c-9cbd-bf45274290a0 (type=location)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=location--07608992-927e-434c-9cbd-bf45274290a0 (type=location)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=location--07608992-927e-434c-9cbd-bf45274290a0 (type=location)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--691d06b5-aa1d-46ec-97d6-e59ef9411b8a (type=indicator)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--691d06b5-aa1d-46ec-97d6-e59ef9411b8a (type=indicator)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--691d06b5-aa1d-46ec-97d6-e59ef9411b8a (type=indicator)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--b2ab314f-3a97-44d4-bfca-6a9857a6fe17 (type=indicator)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--b2ab314f-3a97-44d4-bfca-6a9857a6fe17 (type=indicator)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--b2ab314f-3a97-44d4-bfca-6a9857a6fe17 (type=indicator)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--ca26195e-e3c0-4139-8e21-0af90c89bd27 (type=indicator)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--ca26195e-e3c0-4139-8e21-0af90c89bd27 (type=indicator)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--ca26195e-e3c0-4139-8e21-0af90c89bd27 (type=indicator)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--644bc5dc-1627-4c3a-b9d8-bb2a9fa30567 (type=indicator)
+        Node2 ID=threat-actor--5a4e2c3e-c473-4acf-b7a9-14ee4d61a1ab (type=threat-actor)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--644bc5dc-1627-4c3a-b9d8-bb2a9fa30567 (type=indicator)
+        Node2 ID=infrastructure--2b7476d1-ef32-4386-950a-f8898d25ec5e (type=infrastructure)
+        => Different types => Similarity = 0.0
+
+[DEBUG] Calculating similarity between nodes:
+        Node1 ID=indicator--644bc5dc-1627-4c3a-b9d8-bb2a9fa30567 (type=indicator)
+        Node2 ID=malware--6a8c7816-7890-4d3a-9be4-b2dbb7c4a1f5 (type=malware)
+        => Different types => Similarity = 0.0
+[DEBUG] Node similarity matrix constructed:
+ [[0.         0.         0.        ]
+ [0.         0.         0.        ]
+ [0.         0.         0.60747674]
+ [0.62015708 0.         0.        ]
+ [0.         0.         0.        ]
+ [0.         0.         0.        ]
+ [0.         0.         0.        ]
+ [0.         0.         0.        ]
+ [0.         0.         0.        ]]
+
+[DEBUG] Performing Hungarian matching on the node similarity matrix...
+[DEBUG] Hungarian matching results (row->col): [(1, 1), (2, 2), (3, 0)]
+
+[DEBUG] Node matching statistics:
+       Number of nodes in graph1: 9
+       Number of nodes in graph2: 3
+       Matched node count:        3
+       Node insertions:           0
+       Node deletions:            6
+       Node match accuracy:       33.33%
+
+[DEBUG] Edge matching statistics:
+       Number of edges in graph1: 13
+       Number of edges in graph2: 3
+       Matched edges:  1
+       Inserted edges: 2
+       Deleted edges:  12
+
+[DEBUG] GED calculation:
+       node_insertions: 0
+       node_deletions:  6
+       matched_node_diff_sum: 1.772
+       => Num_node_diff =     6
+       inserted_edges:  2
+       deleted_edges:   12
+       => GED_ratio =         0.990
+       => GED = 21.772
+       => max_possible_cost = 28
+       => Final similarity = 0.222
+[INFO] Final similarity (0~1): 0.222
